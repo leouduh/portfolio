@@ -1,0 +1,14 @@
+{{define "content"}}
+<h1>Projects</h1>
+<div>
+    {{range .Projects}}
+    <article>
+        <h2>
+            <a href="/projects/{{.Slug}}">{{ .Title}}</a>
+            <p>{{.Summary}}</p>
+        </h2>
+    </article>
+    {{end}}
+</div>
+<p>See more on <a href="{{ .Github}}" target="_blank" rel="noopener noreferrer">Github</a>.</p>
+{{end}}

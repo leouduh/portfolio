@@ -1,0 +1,10 @@
+{{define "content"}}
+<h1>{{.Project.Title}}</h1>
+<p>{{.Project.Description}}</p>
+<ul>
+    {{range .Project.Stack}}
+    <li>{{.}}</li>
+    {{end}}
+</ul>
+<a href="{{.Project.RepoURL}}" target="_blank" rel="noopener noreferrer">View repository on Github</a>
+{{end}}
