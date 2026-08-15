@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -13,6 +12,8 @@ var homeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templ
 var projectsTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/projects.html"))
 var projectDetailTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/project_detail.html"))
 var contactTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/contact.html"))
+var resumeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/resume.html"))
+var blogTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/blog.html"))
 
 type Project struct {
 	Slug string
@@ -34,13 +35,21 @@ type Github struct {
 	GithubUrl string
 }
 
+type Experience struct{
+	Role string
+	Company string
+	Period string
+	Highlights []string
+}
 type Page struct{
 	Title string
 	Projects []Project
 	Project Project
 	Github Github
 	Contact Contact
+	Experience []Experience
 } 
+
 
 var projects = []Project{
 	{
@@ -64,6 +73,25 @@ var contact = Contact{
 
 var github = Github{
 	GithubUrl: "https://github.com/leouduh",
+}
+
+var experience = []Experience{
+	{
+		Role: "Machine Learing/MLOps Egineer",
+		Company: "Jaguar Land Rover",
+		Period: "May 2023 - Present",
+		Highlights: []string{
+			"Deployed a NLP service in production serving thousands of customers",
+		},
+	},
+	{
+		Role: "Software Engineer",
+		Company: "Hauwei Technologies Co., Ltd.",
+		Period: "February 2021 - December 2021",
+		Highlights: []string{
+			"Built web applications for Internet Service Providers like MTN and Airtel in SubSaharan Africa",
+		},
+	},
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request){
@@ -114,8 +142,16 @@ func projectDetailHandler(w http.ResponseWriter, r *http.Request){
 }
 
 func resumeHandler(w http.ResponseWriter, r *http.Request){
+	data := Page{
+		Title: "resume",
+		Experience: experience,
+		Contact: contact,
+	}
+	err := resumeTmpl.ExecuteTemplate(w, "base", data)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 	
-	fmt.Fprintln(w, "temporary resume landing page")
 
 }
 
@@ -130,6 +166,16 @@ func contactHandler(w http.ResponseWriter, r *http.Request){
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
+}
+
+func blogHangler(w http.ResponseWriter, r *http.Request){
+	data := Page{
+		Title: "blog",
+	}
+	err := blogTmpl.ExecuteTemplate(w, "base", data)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 // write middle ware function to intercept trailing slashes
@@ -160,6 +206,7 @@ func main(){
 	mux.HandleFunc("GET /projects/{slug}", projectDetailHandler)
 	mux.HandleFunc("/resume", resumeHandler)
 	mux.HandleFunc("/contact", contactHandler)
+	mux.HandleFunc("/blog", blogHangler)
 
 	addr := ":" + port
 	log.Printf("Server starting on address %s", addr)
