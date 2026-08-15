@@ -12,6 +12,7 @@ import (
 var homeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/home.html"))
 var projectsTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/projects.html"))
 var projectDetailTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/project_detail.html"))
+var contactTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/contact.html"))
 
 type Project struct {
 	Slug string
@@ -23,12 +24,23 @@ type Project struct {
 	Featured bool
 }
 
+type Contact struct {
+	Email string
+	Discord string
+	Github string
+}
+
+type Github struct {
+	GithubUrl string
+}
+
 type Page struct{
 	Title string
 	Projects []Project
 	Project Project
-	Github string
-}
+	Github Github
+	Contact Contact
+} 
 
 var projects = []Project{
 	{
@@ -42,6 +54,18 @@ var projects = []Project{
 	// {Slug: "", Title: "", Summary: "", Featured: true},
 
 }
+
+var contact = Contact{
+	Github: "http://github.com/leouduh",
+	Email: "mailto:chigozieuduh.cu@gmail.com",
+	Discord: "https://discord.com/users/852747108212539422",
+
+}
+
+var github = Github{
+	GithubUrl: "https://github.com/leouduh",
+}
+
 func homeHandler(w http.ResponseWriter, r *http.Request){
 	data := Page{Title: "Home"}
 	err := homeTmpl.ExecuteTemplate(w, "base", data)
@@ -60,7 +84,7 @@ func projectsHandler(w http.ResponseWriter, r *http.Request){
 	data := Page{
 		Title: "Projects",
 		Projects: featured, 
-		Github: "https://github.com/leouduh",
+		Github: github,
 	}
 	err := projectsTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil{
@@ -96,7 +120,16 @@ func resumeHandler(w http.ResponseWriter, r *http.Request){
 }
 
 func contactHandler(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintln(w, "temporary contact landing page")
+	data := Page{
+		Title: "contact-info",
+		Github: github,
+		Contact: contact,
+	}
+	err := contactTmpl.ExecuteTemplate(w, "base", data)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
 }
 
 // write middle ware function to intercept trailing slashes
