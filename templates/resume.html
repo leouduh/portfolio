@@ -1,0 +1,17 @@
+{{define "content"}}
+<h1>Experience</h1>
+<div>
+    {{range .Experience}}
+    <article>
+        <h2>{{.Role}} - {{.Company}}</h2>
+        <p>{{.Period}}</p>
+        <ul>
+            {{range .Highlights}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+    </article>
+    {{end}}
+</div>
+<p>Want a PDF Version? <a href="{{.Contact.Email}}?subject=Resume%20Request">Request it here!</a> </p>
+{{end}}
