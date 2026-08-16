@@ -1,10 +1,14 @@
 {{define "content"}}
 <section>
     <h1 class="text-4xl font-bold mb-4"> Hey! I am <span class="text-emerald-400">Leo</span>, aka Leo-Sama</h1>
-    <p class="text-gray-400 text-lg max-w-xl mb-8">{{.AboutLeo}}</p>
-    <div class="flex gap-4">
+    <div class="text-gray-400 text-lg max-w-2xl mb-8 space-y-4">
+        {{range .AboutLeo}}
+        <p>{{.}}</p>
+        {{end}}
+    </div>
+        <div class="flex gap-4">
         <a href="/projects" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-lg">View projects</a>
-        <a href="/contact" class="border border-gray-700 hover:border-emerald-40 px-5 py-2 rounded-lg">Get in touch</a>
+        <a href="/contact" class="border border-gray-700 hover:border-emerald-400 px-5 py-2 rounded-lg">Get in touch</a>
     </div>
 </section>
 
