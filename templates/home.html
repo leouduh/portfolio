@@ -1,15 +1,19 @@
 {{define "content"}}
-<h1> Hey! I am Leo, aka Leo-Sama</h1>
-<p>I am an MLOps Engineers particularly focues on building reuseable and scalable pipelines and moving data science and machine learning projects from ideation into production</p>
 <section>
-    <h2>Skills</h2>
-    <ul>
-        <li> CI/CD Gitlab</li>
-        <li> Docker </li>
-        <li> AWS CDK</li>
-        <li> Terraform</li>
-        <li> Model serving &amp; monitoring </li>
-        <li> Python</li>
+    <h1 class="text-4xl font-bold mb-4"> Hey! I am <span class="text-emerald-400">Leo</span>, aka Leo-Sama</h1>
+    <p class="text-gray-400 text-lg max-w-xl mb-8">{{.AboutLeo}}</p>
+    <div class="flex gap-4">
+        <a href="/projects" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-lg">View projects</a>
+        <a href="/contact" class="border border-gray-700 hover:border-emerald-40 px-5 py-2 rounded-lg">Get in touch</a>
+    </div>
+</section>
+
+<section class="py-8 border-t border-gray-800">
+    <h2 class="text-xl font-semibold mb-4 text-gray-200">Skills</h2>
+    <ul class="flex flex-wrap gap-2">
+        {{range .Skills}}
+        <li class="bg-gray-800 text-emerald-400 text-sm px-3 py-1 rounded-full">{{.}} </li>
+        {{end}}
     </ul>
 </section>
 {{end}}

@@ -14,41 +14,7 @@ var projectDetailTmpl = template.Must(template.ParseFiles("templates/layout.html
 var contactTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/contact.html"))
 var resumeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/resume.html"))
 var blogTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/blog.html"))
-
-type Project struct {
-	Slug string
-	Title string
-	Summary string
-	Description string
-	Stack []string
-	RepoURL string
-	Featured bool
-}
-
-type Contact struct {
-	Email string
-	Discord string
-	Github string
-}
-
-type Github struct {
-	GithubUrl string
-}
-
-type Experience struct{
-	Role string
-	Company string
-	Period string
-	Highlights []string
-}
-type Page struct{
-	Title string
-	Projects []Project
-	Project Project
-	Github Github
-	Contact Contact
-	Experience []Experience
-} 
+var askTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/ask.html"))
 
 
 var projects = []Project{
@@ -94,8 +60,24 @@ var experience = []Experience{
 	},
 }
 
+var aboutLeo string ="I am MLOps Engineer that operates at the intersection between data science, machine learning and software engineering, experienced at deploying ml models into production on cloud infrastructures like AWS"
+
+
+var skills = []string{
+	"Python",
+	"CI/CD Gitlab",
+	"Docker",
+	"AWS CDK",
+	"AWS",
+	"Terraform",
+	"Model Deployment",
+	"Model Monitoring and Observability",
+	"Golang",
+	"C programming language",
+}
+
 func homeHandler(w http.ResponseWriter, r *http.Request){
-	data := Page{Title: "Home"}
+	data := Page{Title: "Home", Skills: skills, AboutLeo: aboutLeo,}
 	err := homeTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -151,8 +133,6 @@ func resumeHandler(w http.ResponseWriter, r *http.Request){
 	if err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-	
-
 }
 
 func contactHandler(w http.ResponseWriter, r *http.Request){
@@ -165,7 +145,6 @@ func contactHandler(w http.ResponseWriter, r *http.Request){
 	if err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
 }
 
 func blogHangler(w http.ResponseWriter, r *http.Request){
@@ -176,6 +155,17 @@ func blogHangler(w http.ResponseWriter, r *http.Request){
 	if err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+}
+
+func askHandler(w http.ResponseWriter, r *http.Request){
+	data := Page{
+		Title: "ask-ai",
+	}
+	err := askTmpl.ExecuteTemplate(w, "base", data)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
 }
 
 // write middle ware function to intercept trailing slashes
@@ -207,6 +197,7 @@ func main(){
 	mux.HandleFunc("/resume", resumeHandler)
 	mux.HandleFunc("/contact", contactHandler)
 	mux.HandleFunc("/blog", blogHangler)
+	mux.HandleFunc("/ask", askHandler)
 
 	addr := ":" + port
 	log.Printf("Server starting on address %s", addr)

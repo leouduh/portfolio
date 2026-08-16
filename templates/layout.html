@@ -1,25 +1,25 @@
 {{define "base"}}
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}} - Portfolio</title>
     <link rel="stylesheet" href="/static/css/output.css">
-
-    <head>
-    <body>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/projects">Projects</a>
-            <a href="/resume">Resume</a>
-            <a href="/contact">Contact</a>
-            <a href="/blog">Blog</a>
+</head>
+    <body class="bg-gray-900 text-gray-100 font-mono min-h-screen">
+        <nav class="flex gap-6 p-4 border-b border-gray-700">
+            <a href="/" class="hover:text-emerald-400">Home</a>
+            <a href="/projects" class="hover:text-emerald-400">Projects</a>
+            <a href="/resume" class="hover:text-emerald-400">Resume</a>
+            <a href="/contact" class="hover:text-emerald-400">Contact</a>
+            <a href="/blog" class="hover:text-emerald-400">Blog</a>
         </nav>
-    <main>
+    <main class="max-w-3xl mx-auto p-6">
         {{template "content" .}}
     </main>
+    <a id="ask-ai_button" href="/ask" class="fixed bottom-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-emerald-500">Ask AI about me</a>
     </body>
-    </head>
 
 </html>
 
