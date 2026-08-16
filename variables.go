@@ -2,16 +2,16 @@ package main
 
 var projects = []Project{
 	{
-		Slug:    "porfolio-website",
-		Title:   "leo's portfolio website",
-		Summary: "Personal portfolio webiste where I showcase myself to the rest of the world",
+		Slug:        "porfolio-website",
+		Title:       "leo's portfolio website",
+		Summary:     "Personal portfolio webiste where I showcase myself to the rest of the world",
 		Description: "This is something I have been putting off and procrastinating on for so many years finally " +
-			"getting this done here. I show case in this website how I use golang, css, html to get something up and " +
-			"running, I will be adding blogs, and my thoughts here. I hope this will not be an abandoned project and " +
-			"I can keep working on it. This website features a little chatbot where people can ask questions about me if" +
-			"they don't want to reach me",
-		Stack:    []string{"Golang", "html", "CSS"},
-		Featured: true,
+		"getting this done here. I show case in this website how I use golang, css, html to get something up and " +
+		"running, I will be adding blogs, and my thoughts here. I hope this will not be an abandoned project and " + 
+		"I can keep working on it. This website features a little chatbot where people can ask questions about me if" +
+		"they don't want to reach me",
+		Stack:       []string{"Golang", "html", "CSS"},
+		Featured:    true,
 	},
 	// {Slug: "", Title: "", Summary: "", Featured: true},
 
