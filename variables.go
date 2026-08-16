@@ -46,15 +46,17 @@ var experience = []Experience{
 	},
 }
 
-var p1 string = "Funny thing my first name is actually Chigozie but I go by Leo professionally," +
-	"everyone pretty much calls me leo. I build the IaC and pipelines that help data scientists get their " +
+var p1 string = "Funny thing my first name is actually Chigozie but I go by Leo professionally, " +
+	"everyone pretty much calls me Leo. I build the IaC and pipelines that help data scientists get their " +
 	"beautiful not so boring projects out of notebooks and into cloud environments useful for end users and " +
-	"internal stakeholders. At JLR I have shipped a bunch of data and ml pipelines and NLP recommendation service " +
+	"internal stakeholders. At JLR I have shipped a bunch of data and ml pipelines specifically around anomaly " +
+	"detection, saving JLR money in warranty claims. I have also shipped an  NLP recommendation service " +
 	"in production serving thousands of customers, before that I built web platforms for telecom providers across " +
 	"Sub-Saharan African back in my home country-Nigeria."
-var p2 string = "Outside of work, I enjoy playing sports football (it is football and not soccer btw) and getting " +
-	"active either going to the gym or on some hike in the landscapes of ireland. Going to be using this space to " +
-	"Document finding and bloging about randome stuff I find interesting in tech and outside of tecch"
+var p2 string = "Outside of work, I enjoy playing sports like basketbll and football " +
+	"(it is football and not soccer btw) and getting " +
+	"active either going to the gym or on some hike on the landscapes of ireland. Going to be using this space to " +
+	"document findings and bloging about randome stuff I find interesting in tech and outside of tech"
 var p3 string = "Working on something intersing or just wnat to say hi? reach out to me or ask that little ai chatbot"
 var aboutLeo = []string{
 	p1,
@@ -72,4 +74,6 @@ var skills = []string{
 	"Model Monitoring and Observability",
 	"Golang",
 	"C programming language",
+	"Kubernetes",
+	"Snowflake",
 }
