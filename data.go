@@ -14,6 +14,7 @@ type Contact struct {
 	Email   string
 	Discord string
 	Github  string
+	Instagram string
 }
 
 type Github struct {

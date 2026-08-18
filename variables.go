@@ -21,6 +21,7 @@ var contact = Contact{
 	Github:  "http://github.com/leouduh",
 	Email:   "mailto:chigozieuduh.cu@gmail.com",
 	Discord: "https://discord.com/users/852747108212539422",
+	Instagram: "https://www.instagram.com/directurban",
 }
 
 var github = Github{

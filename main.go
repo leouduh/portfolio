@@ -54,7 +54,7 @@ func main() {
 	// correct, intentional choice here (unlike /static/ above, which genuinely needs arbitrarily nested
 	// paths to work). Same reasoning applies to /contact, /blog, and /ask below.
 	mux.HandleFunc("/resume", resumeHandler)
-	mux.HandleFunc("/contact", contactHandler)
+	// mux.HandleFunc("/contact", contactHandler)
 	mux.HandleFunc("/blog", blogHangler)
 	mux.HandleFunc("/ask", askHandler)
 

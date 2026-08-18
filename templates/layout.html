@@ -18,6 +18,22 @@
     <main class="max-w-3xl mx-auto p-6">
         {{template "content" .}}
     </main>
+    <footer class="flex gap-6 p-4 border-t border-gray-800 justify-center">
+            <a href="{{.Contact.Instagram}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
+                <img src="/static/img/icons/Instagram-Alt--Streamline-Unicons.svg" alt="Instagram" class="w-12 h-12">
+            </a>
+            <a href="{{.Contact.Github}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
+                <img src="static/img/icons/icons8-github.svg" alt="Github" class="w-12 h-12" >
+            </a>
+            <a href="{{.Contact.Discord}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
+                <img src="static/img/icons/icons8-discord.svg" alt="Github" class="w-12 h-12" >
+            </a>
+            <a href="{{.Contact.Email}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
+                <img src="static/img/icons/Mail-Send-Envelope--Streamline-Core.svg" alt="Github" class="w-12 h-12" >
+            </a>
+
+         
+    </footer>
     <a id="ask-ai_button" href="/ask" class="fixed bottom-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-emerald-500">Ask AI about me</a>
     </body>
 

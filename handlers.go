@@ -8,13 +8,18 @@ import (
 var homeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/home.html"))
 var projectsTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/projects.html"))
 var projectDetailTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/project_detail.html"))
-var contactTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/contact.html"))
+// var contactTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/contact.html"))
 var resumeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/resume.html"))
 var blogTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/blog.html"))
 var askTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/ask.html"))
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	data := Page{Title: "Home", Skills: skills, AboutLeo: aboutLeo}
+	data := Page{
+		Title: "Home",
+		Skills: skills,
+		AboutLeo: aboutLeo,
+		Contact: contact,
+	}
 	err := homeTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -32,6 +37,7 @@ func projectsHandler(w http.ResponseWriter, r *http.Request) {
 		Title:    "Projects",
 		Projects: featured,
 		Github:   github,
+		Contact: contact,
 	}
 	err := projectsTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil {
@@ -72,21 +78,22 @@ func resumeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func contactHandler(w http.ResponseWriter, r *http.Request) {
-	data := Page{
-		Title:   "contact-info",
-		Github:  github,
-		Contact: contact,
-	}
-	err := contactTmpl.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
+// func contactHandler(w http.ResponseWriter, r *http.Request) {
+// 	data := Page{
+// 		Title:   "contact-info",
+// 		Github:  github,
+// 		Contact: contact,
+// 	}
+// 	err := contactTmpl.ExecuteTemplate(w, "base", data)
+// 	if err != nil {
+// 		http.Error(w, err.Error(), http.StatusInternalServerError)
+// 	}
+// }
 
 func blogHangler(w http.ResponseWriter, r *http.Request) {
 	data := Page{
 		Title: "blog",
+		Contact: contact,
 	}
 	err := blogTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil {
