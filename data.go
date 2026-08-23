@@ -15,6 +15,7 @@ type Contact struct {
 	Discord string
 	Github  string
 	Instagram string
+	LinkedIn string
 }
 
 type Github struct {

@@ -1,7 +1,7 @@
 {{define "content"}}
 <section>
-    <h1 class="text-4xl font-bold mb-4"> Hey! I am <span class="text-emerald-400">Leo</span>, aka Leo-Sama</h1>
-    <div class="text-gray-400 text-lg max-w-3xl mb-8 space-y-4">
+    <h1 class="text-4xl font-bold mb-4"> Hey! I am <span class="text-emerald-400">Leo</span>, aka LeoSama</h1>
+    <div class="text-gray-700 dark:text-gray-400 text-lg max-w-3xl mb-8 space-y-4">
         {{range .AboutLeo}}
         <p>{{.}}</p>
         {{end}}
@@ -12,8 +12,8 @@
     </div>
 </section>
 
-<section class="py-8 border-t border-gray-800">
-    <h2 class="text-xl font-semibold mb-4 text-gray-200">Skills</h2>
+<section class="py-8 border-t border-gray-300 dark:border-gray-800">
+    <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Skills</h2>
     <ul class="flex flex-wrap gap-2">
         {{range .Skills}}
         <li class="bg-gray-800 text-emerald-400 text-sm px-3 py-1 rounded-full">{{.}} </li>

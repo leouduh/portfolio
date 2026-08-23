@@ -4,11 +4,11 @@
     {{range .Projects}}
     <article>
         <h2>
-            <a href="/projects/{{.Slug}}">{{ .Title}}</a>
-            <p>{{.Summary}}</p>
+            <a href="/projects/{{.Slug}}" class="hover:text-emerald-400">{{ .Title}}</a>
+            <p class="text-gray-400">{{.Summary}}</p>
         </h2>
     </article>
     {{end}}
 </div>
-<p>See more on <a href="{{ .Github.GithubUrl}}" target="_blank" rel="noopener noreferrer">Github</a>.</p>
+<p class="mt-8 text-gray-400">See more on <a href="{{ .Github.GithubUrl}}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Github</a>.</p>
 {{end}}

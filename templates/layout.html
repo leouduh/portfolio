@@ -5,35 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}} - Portfolio</title>
+    <script>
+        (function () {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = saved ? saved === 'dark' : prefersDark;
+        document.documentElement.classList.toggle('dark', isDark);
+        })();
+        </script>
     <link rel="stylesheet" href="/static/css/output.css">
 </head>
-    <body class="bg-gray-900 text-gray-100 font-mono min-h-screen">
-        <nav class="flex gap-6 p-4 border-b border-gray-700">
+    <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-mono min-h-screen">
+        <nav class="flex items-center gap-6 p-4 border-b border-gray-700">
             <a href="/" class="hover:text-emerald-400">Home</a>
             <a href="/projects" class="hover:text-emerald-400">Projects</a>
             <a href="/resume" class="hover:text-emerald-400">Resume</a>
             <a href="/blog" class="hover:text-emerald-400">Blog</a>
+            <button id="theme-toggle" class="cursor-pointer hover:text-emerald-400 border border-gray-700 rounded-lg px-3 py-1" aria-label="Toggle theme">🌓</button>
         </nav>
     <main class="max-w-3xl mx-auto p-6">
         {{template "content" .}}
     </main>
-    <footer class="flex gap-6 p-4 border-t border-gray-800 justify-center">
-            <a href="{{.Contact.Instagram}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
+    <footer class="flex gap-6 p-4 border-t border-gray-300 dark:border-gray-800 justify-center">
+            <a href="{{.Contact.Instagram}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400" title="Instagram">
                 <img src="/static/img/icons/Instagram-Alt--Streamline-Unicons.svg" alt="Instagram" class="w-12 h-12">
             </a>
-            <a href="{{.Contact.Github}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
-                <img src="static/img/icons/icons8-github.svg" alt="Github" class="w-12 h-12" >
+            <a href="{{.Contact.Github}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400" title="Github">
+                <img src="/static/img/icons/icons8-github.svg" alt="Github" class="w-12 h-12" >
             </a>
-            <a href="{{.Contact.Discord}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
-                <img src="static/img/icons/icons8-discord.svg" alt="Github" class="w-12 h-12" >
+            <a href="{{.Contact.Discord}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400" title="Discord">
+                <img src="/static/img/icons/icons8-discord.svg" alt="Discord" class="w-12 h-12" >
             </a>
-            <a href="{{.Contact.Email}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">
-                <img src="static/img/icons/Mail-Send-Envelope--Streamline-Core.svg" alt="Github" class="w-12 h-12" >
+            <a href="{{.Contact.Email}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400" title="Email">
+                <img src="/static/img/icons/Mail-Send-Envelope--Streamline-Core.svg" alt="Email" class="w-12 h-12" >
             </a>
-
+            <a href="{{.Contact.LinkedIn}}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400" title="LinkedIn">
+                <img src="/static/img/icons/linkedin-svgrepo-com.svg" alt="LinkedIn" class="w-12 h-12" >
+            </a>
          
     </footer>
     <a id="ask-ai_button" href="/ask" class="fixed bottom-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-emerald-500">Ask AI about me</a>
+    <script src="/static/js/theme.js" defer></script>
     </body>
 
 </html>

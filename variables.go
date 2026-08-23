@@ -22,6 +22,7 @@ var contact = Contact{
 	Email:   "mailto:chigozieuduh.cu@gmail.com",
 	Discord: "https://discord.com/users/852747108212539422",
 	Instagram: "https://www.instagram.com/directurban",
+	LinkedIn: "https://www.linkedin.com/in/chigozie-leo-uduh-42883114a/",
 }
 
 var github = Github{
