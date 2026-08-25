@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 golang:1.25-bookworm AS builder
+FROM  golang:1.25-bookworm AS builder
 WORKDIR /app
 
 COPY go.mod ./
@@ -16,7 +16,7 @@ RUN tailwindcss -i input.css -o static/css/output.css --minify
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o /app/server .
 
 # another image
-FROM --platform=linux/arm64 gcr.io/distroless/static-debian12
+FROM  gcr.io/distroless/static-debian12
 WORKDIR /app
 
 COPY --from=builder /app/server .
