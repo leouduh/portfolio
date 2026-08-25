@@ -15,3 +15,9 @@ Golang files litered in root directory
 ./Static for Tailwind css
 
 For the website I am using Golang's Native net/http package, simple and easy, not Gin not GoFiber I belive they call it,just straight of net/http. Thank you
+
+# public ip
+
+52.17.122.172
+
+how to ssh from local `ssh -i ~/.ssh/id_ed25519 ubuntu@52.17.122.172`
