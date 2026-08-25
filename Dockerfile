@@ -1,5 +1,4 @@
 FROM golang:1.25-bookworm AS builder
-;wa
 WORKDIR /app
 
 COPY go.mod ./
