@@ -12,7 +12,19 @@ resource "aws_lightsail_instance" "portfolio-leosama" {
   user_data = <<-EOF
   #!/bin/bash
   apt-get update && apt-get upgrade -y
-  apt-get install vim -y
+  apt-get install vim -y unzip
+
+  #install docker
+  curl -fsSL https://get.docker.com | sh
+  usermod -aG docker ubuntu
+
+  # Install aws cli v2
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  ./aws/install
+
+  # clone the repo
+  git clone https://github.com/leouduh/portfolio.git &> /dev/null
   EOF
 }
 
