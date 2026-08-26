@@ -19,4 +19,4 @@ ratelimit-internet:
 	for i in $$(seq 1 40); do curl -s -o /dev/null -w "%{http_code}\n" https://portfolio.leo-sama.com; done
 
 ratelimit-remote:
-	ssh porfolio-domain "for i in $$(seq 1 40); do curl -s -o /dev/null -w "%{http_code}\n" https://portfolio.leo-sama.com; done"
+	ssh portfolio-domain "for i in $$(seq 1 40); do curl -s -o /dev/null -w "%{http_code}\n" https://portfolio.leo-sama.com; done"
