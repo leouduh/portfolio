@@ -25,7 +25,7 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	
+
 	// mux is a ServeMux - a lookup table mapping URL patterns to handlers. For every request it finds the
 	// most specific matching pattern and calls that pattern's handler.
 	mux := http.NewServeMux()
@@ -60,7 +60,7 @@ func main() {
 
 	addr := ":" + port
 	log.Printf("Server starting on address %s", addr)
-	
+
 	go cleanUpVisitors() // run cleanupVisiors which is a goroutine
 	err := http.ListenAndServe(addr, rateLimit(stripTrailingSlash(mux)))
 	if err != nil {

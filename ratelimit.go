@@ -10,19 +10,19 @@ import (
 )
 
 type visitor struct {
-	limiter *rate.Limiter
+	limiter  *rate.Limiter
 	lastSeen time.Time
 }
 
 var (
-	visitors = make(map[string]*visitor)
-	visitorsMu  sync.Mutex
+	visitors   = make(map[string]*visitor)
+	visitorsMu sync.Mutex
 )
 
 func clientIP(r *http.Request) string {
 	// gets the user ip from their request
 	ip := r.Header.Get("X-Real-IP")
-	if ip != ""{
+	if ip != "" {
 		return ip
 	}
 	host, _, err := net.SplitHostPort(r.RemoteAddr)
@@ -36,13 +36,12 @@ func getLimiter(ip string) *rate.Limiter {
 	visitorsMu.Lock()
 	defer visitorsMu.Unlock()
 
-	v, exists := visitors[ip] 
+	v, exists := visitors[ip]
 	if !exists {
 		limiter := rate.NewLimiter(2, 10)
 		visitors[ip] = &visitor{
-			limiter: limiter,
+			limiter:  limiter,
 			lastSeen: time.Now(),
-
 		}
 		return limiter
 	}
@@ -51,8 +50,7 @@ func getLimiter(ip string) *rate.Limiter {
 
 }
 
-
-func cleanUpVisitors(){
+func cleanUpVisitors() {
 	for {
 		time.Sleep(time.Minute)
 		visitorsMu.Lock()
@@ -66,7 +64,7 @@ func cleanUpVisitors(){
 }
 
 func rateLimit(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		limiter := getLimiter(clientIP(r))
 		if !limiter.Allow() {
 			http.Error(w, "Too many requests", http.StatusTooManyRequests)

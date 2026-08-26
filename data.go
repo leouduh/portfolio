@@ -11,11 +11,11 @@ type Project struct {
 }
 
 type Contact struct {
-	Email   string
-	Discord string
-	Github  string
+	Email     string
+	Discord   string
+	Github    string
 	Instagram string
-	LinkedIn string
+	LinkedIn  string
 }
 
 type Github struct {

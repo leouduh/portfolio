@@ -14,10 +14,10 @@ var askTmpl = template.Must(template.ParseFiles("templates/layout.html", "templa
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	data := Page{
-		Title: "Home",
-		Skills: skills,
+		Title:    "Home",
+		Skills:   skills,
 		AboutLeo: aboutLeo,
-		Contact: contact,
+		Contact:  contact,
 	}
 	err := homeTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil {
@@ -36,7 +36,7 @@ func projectsHandler(w http.ResponseWriter, r *http.Request) {
 		Title:    "Projects",
 		Projects: featured,
 		Github:   github,
-		Contact: contact,
+		Contact:  contact,
 	}
 	err := projectsTmpl.ExecuteTemplate(w, "base", data)
 	if err != nil {
@@ -77,10 +77,9 @@ func resumeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-
 func blogHangler(w http.ResponseWriter, r *http.Request) {
 	data := Page{
-		Title: "blog",
+		Title:   "blog",
 		Contact: contact,
 	}
 	err := blogTmpl.ExecuteTemplate(w, "base", data)
