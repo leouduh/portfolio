@@ -31,11 +31,17 @@ var github = Github{
 
 var experience = []Experience{
 	{
-		Role:    "Machine Learing/MLOps Egineer",
+		Role:    "Machine Learning/MLOps Egineer",
 		Company: "Jaguar Land Rover",
 		Period:  "May 2023 - Present",
 		Highlights: []string{
-			"Deployed a NLP service in production serving thousands of customers",
+
+			"I Deployed infrastructure for an NLP vehicle-recommendation service being integrated " +
+				"into the JLR UK vehicle configuration website" +
+				"sized for thousands of daily users. This was the Data Science Chapter's first workload in a " +
+				"production account and its first serving external users over the public internet " +
+				"rather than internal warranty and engineering teams. Owned architecture, delivery and operations; " +
+				"data scientists owned model logic",
 		},
 	},
 	{

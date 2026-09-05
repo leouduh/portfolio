@@ -3,25 +3,30 @@
 <div class="space-y-6">
     {{range .Experience}}
     <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
-    <div class="flex flex-wrap items-start justify-between gap-2">
+        <div class="flex flex-wrap items-start justify-between gap-2">
             <div>
                 <h2 class="text-lg font-semibold">{{.Role}}</h2>
-                <p class="text-sm font-medium text-emerald-700 dark:text-gray-400">{{.Company}}</p>
-                <span class="whitespace-nowrap rounded-full bg-emerald-900 px-3 py-1 text-xs font-medium text-emerald-50 dark:bg-gray-900">{{.Period}}</span>
-                <div>
-                    <ul class="mt-3 list-inside list-disc space-y-1 text-sm  text-emerald-900 dark:text-gray-700">
-                        {{range .Highlights}}
-                        <li class="text-emerald-900 dark:text-white">{{.}}</li>
-                        {{end}}
-                    </ul>
-                </div>
-
+                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">{{.Company}}</p>
             </div>
-
+            <span class="whitespace-nowrap rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">{{.Period}}</span>
         </div>
-
+        <details class="group mt-3">
+            <summary class="flex w-fit ml-auto cursor-pointer list-none items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-600 [&::-webkit-details-marker]:hidden dark:bg-emerald-500/10 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-500/20">
+                More
+                <svg class="h-3 w-3 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </summary>
+            <ul class="mt-3 list-inside list-disc space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                {{range .Highlights}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+        </details>
     </article>
     {{end}}
 </div>
-<p class="mt-8 pt-8 border-t border-gray-300 dark:border-gray-800 text-gray-700 dark:text-gray-400">Want a PDF Version? <a href="{{.Contact.Email}}?subject=Resume%20Request" class="text-emerald-600 dark:text-emerald-300 hover:underline">Request it here!</a> </p>
+<p class="mt-8 pt-8 border-t border-gray-300 dark:border-gray-800 text-gray-700 dark:text-gray-400">
+    Want a PDF version? <a href="{{.Contact.Email}}?subject=Resume%20Request" class="text-emerald-600 dark:text-emerald-400 hover:underline">Request it here!</a>
+</p>
 {{end}}
