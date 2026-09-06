@@ -12,7 +12,7 @@ resource "aws_lightsail_instance" "portfolio-leosama" {
   user_data = <<-EOF
   #!/bin/bash
   apt-get update && apt-get upgrade -y
-  apt-get install vim -y unzip make
+  apt-get install vim -y unzip make sqlite3
 
   #install docker
   curl -fsSL https://get.docker.com | sh
@@ -25,6 +25,10 @@ resource "aws_lightsail_instance" "portfolio-leosama" {
 
   # clone the repo
   git clone https://github.com/leouduh/portfolio.git &> /dev/null
+
+  mkdir -p /home/ubuntu/data
+  chown 65532:65532 /home/ubuntu/data
+  
   aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 214434260197.dkr.ecr.eu-west-1.amazonaws.com
   docker compose pull
   docker compose up -d

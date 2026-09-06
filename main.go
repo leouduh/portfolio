@@ -62,7 +62,11 @@ func main() {
 	log.Printf("Server starting on address %s", addr)
 
 	go cleanUpVisitors() // run cleanupVisiors which is a goroutine
-	err := http.ListenAndServe(addr, rateLimit(stripTrailingSlash(mux)))
+
+	initDB()
+	defer db.Close()
+
+	err := http.ListenAndServe(addr, rateLimit(trackVisits(stripTrailingSlash(mux))))
 	if err != nil {
 		log.Fatalf("server failed: %v", err)
 	}

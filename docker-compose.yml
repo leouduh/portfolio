@@ -4,6 +4,10 @@ services:
     restart: unless-stopped
     networks:
       - web
+    environment:
+      - DB_PATH=/data/visits.db
+    volumes:
+      - /home/ubuntu/data:/data
   
 
   caddy:
