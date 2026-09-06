@@ -29,20 +29,30 @@ var github = Github{
 	GithubUrl: "https://github.com/leouduh",
 }
 
+var jlr_experiences = []string{
+	"Deployed JLR's first ML inference model on the public internet, powering NLP-based vehicle recommendations on rangerover.com",
+	"Owned infrastructure, delivery, and operations end-to-end for the chapter's first production AWS deployment",
+	"Built the chapter's monitoring/observability baseline and release process — immutable artefacts, smoke tests, canary rollbacks",
+	"Main contributor to the chapter's internal AWS CDK library, letting data scientists deploy infra via config instead of code",
+	"Added Iceberg table management, canary deployments, and observability-by-default to the CDK library",
+	"Delivered all of the above inside strict GDPR compliance boundaries",
+}
+
+var h_experiences = []string{
+	"",
+
+}
+
+var unecon_experiences = []string{
+	"",
+}
+
 var experience = []Experience{
 	{
 		Role:    "Machine Learning/MLOps Egineer",
 		Company: "Jaguar Land Rover",
 		Period:  "May 2023 - Present",
-		Highlights: []string{
-
-			"I Deployed infrastructure for an NLP vehicle-recommendation service being integrated " +
-				"into the JLR UK vehicle configuration website" +
-				"sized for thousands of daily users. This was the Data Science Chapter's first workload in a " +
-				"production account and its first serving external users over the public internet " +
-				"rather than internal warranty and engineering teams. Owned architecture, delivery and operations; " +
-				"data scientists owned model logic",
-		},
+		Highlights: jlr_experiences,
 	},
 	{
 		Role:    "Software Engineer",
