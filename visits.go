@@ -5,18 +5,17 @@ import (
 	"database/sql"
 	"encoding/hex"
 	"log"
+	_ "modernc.org/sqlite"
 	"net/http"
 	"os"
 	"strings"
-	_ "modernc.org/sqlite"
 )
 
 var db *sql.DB
 
-
 func initDB() {
 	dbPath := os.Getenv("DB_PATH")
-	if dbPath == ""{
+	if dbPath == "" {
 		dbPath = "./visits.db"
 	}
 	var err error
@@ -35,24 +34,22 @@ func initDB() {
 
 	if _, err := db.Exec(schema); err != nil {
 		log.Fatalf("Error in executing schema: %v", err)
-	} 
+	}
 
 	log.Printf("visits database is ready at %s", dbPath)
 
 }
 
-
-//This function just used for a one way hash to hash ip address and return string. each visitor will have a unique hash
+// This function just used for a one way hash to hash ip address and return string. each visitor will have a unique hash
 func hashIP(ip string) string {
 	digest := sha256.Sum256([]byte(ip))
 	return hex.EncodeToString(digest[:])
 
 }
 
-
-func trackVisits(next http.Handler) http.Handler{
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
-		if strings.HasPrefix(r.URL.Path, "/static/"){
+func trackVisits(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasPrefix(r.URL.Path, "/static/") {
 			next.ServeHTTP(w, r)
 			return
 
@@ -60,12 +57,12 @@ func trackVisits(next http.Handler) http.Handler{
 
 		hashed := hashIP(clientIP(r))
 		if _, err := db.Exec(
-			"INSERT INTO visits (ip_hash, path) VALUES (?, ?)", hashed, r.URL.Path ,
+			"INSERT INTO visits (ip_hash, path) VALUES (?, ?)", hashed, r.URL.Path,
 		); err != nil {
 			log.Printf("failed to record visit: %v", err)
 		}
-		
-		next.ServeHTTP(w, r)	
+
+		next.ServeHTTP(w, r)
 	})
 
 }
