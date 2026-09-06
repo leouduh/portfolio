@@ -40,7 +40,6 @@ var jlr_experiences = []string{
 
 var h_experiences = []string{
 	"",
-
 }
 
 var unecon_experiences = []string{
@@ -49,9 +48,9 @@ var unecon_experiences = []string{
 
 var experience = []Experience{
 	{
-		Role:    "Machine Learning/MLOps Egineer",
-		Company: "Jaguar Land Rover",
-		Period:  "May 2023 - Present",
+		Role:       "Machine Learning/MLOps Egineer",
+		Company:    "Jaguar Land Rover",
+		Period:     "May 2023 - Present",
 		Highlights: jlr_experiences,
 	},
 	{
