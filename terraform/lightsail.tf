@@ -7,7 +7,7 @@ resource "aws_lightsail_instance" "portfolio-leosama" {
   name              = "portfolio-leosama-lightsail-instance"
   availability_zone = "eu-west-1a"
   blueprint_id      = "ubuntu_24_04"
-  bundle_id         = "nano_3_0"
+  bundle_id         = "micro_3_0"
   key_pair_name     = aws_lightsail_key_pair.main.name
   user_data = <<-EOF
   #!/bin/bash
