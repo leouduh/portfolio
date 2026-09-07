@@ -13,7 +13,6 @@ var projects = []Project{
 		Stack:    []string{"Golang", "html", "CSS"},
 		Featured: true,
 	},
-
 }
 
 var contact = Contact{
