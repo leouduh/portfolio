@@ -27,6 +27,12 @@ resource "aws_lightsail_instance" "portfolio-leosama" {
   git clone https://github.com/leouduh/portfolio.git &> /dev/null
 
   mkdir -p /home/ubuntu/data
+  cat <<CREDS > /home/ubuntu/.aws/credentials
+  [default]
+  aws_access_key_id = ${aws_iam_access_key.ecr_pull.id}
+  aws_secret_access_key = ${aws_iam_access_key.ecr_pull.secret}
+  CREDS
+
   chown 65532:65532 /home/ubuntu/data
   
   aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 214434260197.dkr.ecr.eu-west-1.amazonaws.com
