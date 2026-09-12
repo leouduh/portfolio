@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="/static/css/output.css">
 </head>
     <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-mono min-h-screen">
-        <nav class="flex items-center gap-6 p-4 border-b border-gray-700">
+        <nav class="flex items-center gap-6 p-4 border-b border-gray-300 dark:border-gray-700">
             <a href="/" class="hover:text-emerald-400">Home</a>
             <a href="/projects" class="hover:text-emerald-400">Projects</a>
             <a href="/resume" class="hover:text-emerald-400">Resume</a>
             <a href="/blog" class="hover:text-emerald-400">Blog</a>
-            <button id="theme-toggle" class="cursor-pointer hover:text-emerald-400 border border-gray-700 rounded-lg px-3 py-1" aria-label="Toggle theme">🌓</button>
+            <button id="theme-toggle" class="cursor-pointer hover:text-emerald-400 border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-1" aria-label="Toggle theme">🌓</button>
         </nav>
     <main class="max-w-3xl mx-auto p-6">
         {{template "content" .}}

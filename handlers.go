@@ -3,6 +3,7 @@ package main
 import (
 	"html/template"
 	"net/http"
+	"sort"
 )
 
 var homeTmpl = template.Must(template.ParseFiles("templates/layout.html", "templates/home.html"))
@@ -26,15 +27,15 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func projectsHandler(w http.ResponseWriter, r *http.Request) {
-	var featured []Project
-	for _, p := range projects {
-		if p.Featured {
-			featured = append(featured, p)
-		}
-	}
+	sorted := make([]Project, len(projects))
+	copy(sorted, projects)
+	sort.SliceStable(sorted, func(i, j int) bool {
+		return sorted[i].Featured && !sorted[j].Featured
+	})
+
 	data := Page{
 		Title:    "Projects",
-		Projects: featured,
+		Projects: sorted,
 		Github:   github,
 		Contact:  contact,
 	}

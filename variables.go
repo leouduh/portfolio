@@ -3,16 +3,25 @@ package main
 var projects = []Project{
 	{
 		Slug:    "porfolio-website",
-		Title:   "leo's portfolio website",
+		Title:   "My portfolio website",
 		Summary: "Personal portfolio webiste where I showcase myself to the rest of the world",
 		Description: "This is something I have been putting off and procrastinating on for so many years finally " +
 			"getting this done here. I show case in this website how I use golang, css, html to get something up and " +
 			"running, I will be adding blogs, and my thoughts here. I hope this will not be an abandoned project and " +
 			"I can keep working on it. This website features a little chatbot where people can ask questions about me if" +
 			"they don't want to reach me",
-		Stack:    []string{"Golang", "html", "CSS"},
+		Stack:    []string{"Golang", "html", "CSS", "JavaScript", "Terraform"},
 		Featured: true,
 	},
+	{
+		Slug: "ityb",
+		Title: "I Type you Build",
+		Summary: "",
+		Description: "",
+		Stack: []string{"Python"},
+		Featured: true,
+	},
+
 }
 
 var contact = Contact{
@@ -61,19 +70,20 @@ var experience = []Experience{
 	},
 }
 
-var p1 string = "My name firstname really is Chigozie, but I go by my middle name 'Leo.'"  +
-	"everyone pretty much calls me Leo. I build the IaC and pipelines that help data scientists get their " +
-	"beautiful not so boring projects out of notebooks and into cloud environments. " +
-	"I essentially breathe life into their POCs " +
-	"At JLR I have shipped a bunch of data and ml pipelines specifically around anomaly " +
-	"detection, saving JLR money in warranty claims. I have also shipped an  NLP recommendation service " +
-	"in production serving thousands of customers, before that I built web platforms for telecom providers across " +
-	"Sub-Saharan African back in my home country-Nigeria."
-var p2 string = "Outside of work, I enjoy playing sports like basketbll and football " +
-	"(it is football and not soccer btw) and getting " +
-	"active either going to the gym or on some hike. I am gonna be using this space to " +
-	"document findings and blogging about random stuff I find interesting in tech and outside of tech"
-var p3 string = "Working on something interesting or just want to say hi? reach out to me or ask that little ai chatbot"
+var p1 string = "Fun fact: my actual first name is Chigozie — Leo is my middle name, but it's the " +
+	"one that stuck, so that's what everyone calls me. I build the IaC and pipelines that help data " +
+	"scientists turn their beautiful, not-so-boring notebook projects into things that actually run in " +
+	"the cloud — specifically AWS. I basically breathe life into their POCs. At JLR, I've shipped data " +
+	"and ML pipelines specifically around anomaly detection, saving the company real money in warranty " +
+	"claims, along with an NLP recommendation service currently serving thousands of customers in " +
+	"production. Before that, I built web platforms for telecom providers across Sub-Saharan Africa, " +
+	"back in my home country — Nigeria."
+var p2 string = "Outside of work, I play basketball and football (football, not soccer, thank you) " +
+	"and stay active with the gym or a good hike. I've recently picked up bouldering and I'm hooked. " +
+	"I'll be using this space to document findings and blog about random stuff I find interesting, in " +
+	"tech and out of it."
+var p3 string = "Working on something interesting, or just want to say hi? Reach out — or ask that " +
+	"little AI chatbot about me instead."
 var aboutLeo = []string{
 	p1,
 	p2,
