@@ -48,7 +48,15 @@ resource "aws_lightsail_static_ip" "portfolio-leosama" {
 resource "aws_lightsail_static_ip_attachment" "portfolio-leosama" {
   static_ip_name = aws_lightsail_static_ip.portfolio-leosama.name
   instance_name = aws_lightsail_instance.portfolio-leosama.name
+
+  lifecycle {
+    replace_triggered_by = [ 
+      aws_lightsail_instance.portfolio-leosama.id
+    ]
+  }
+
 }
+
 
 resource "aws_lightsail_instance_public_ports" "portfolio-leosama" {
   instance_name = aws_lightsail_instance.portfolio-leosama.name
